@@ -54,18 +54,21 @@ public class MainControllerTest {
     }
 
     private List<ModelDTO> getModelDTOS() {
-        ModelDTO modelDTO = new ModelDTO();
-        modelDTO.setYear_to(2022);
-        modelDTO.setYear_from(2012);
-        modelDTO.setName("FABIA");
-        ModelDTO modelDTO2 = new ModelDTO();
-        modelDTO2.setYear_to(2022);
-        modelDTO2.setYear_from(2012);
-        modelDTO2.setName("KODIAQ");
-        ModelDTO modelDTO3 = new ModelDTO();
-        modelDTO3.setYear_to(2022);
-        modelDTO3.setYear_from(2012);
-        modelDTO3.setName("YETI");
+        ModelDTO modelDTO = ModelDTO.builder()
+                .name("FABIA")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
+        ModelDTO modelDTO2 = ModelDTO.builder()
+                .name("KODIAQ")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
+        ModelDTO modelDTO3 = ModelDTO.builder()
+                .name("YETI")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
         List<ModelDTO> modelDTOS = new ArrayList<>();
         modelDTOS.add(modelDTO);
         modelDTOS.add(modelDTO2);
@@ -75,18 +78,21 @@ public class MainControllerTest {
     }
 
     private List<ModelDTO> getModelsByName() {
-        ModelDTO modelDTO = new ModelDTO();
-        modelDTO.setYear_to(2022);
-        modelDTO.setYear_from(2012);
-        modelDTO.setName("FABIA");
-        ModelDTO modelDTO2 = new ModelDTO();
-        modelDTO2.setYear_to(2022);
-        modelDTO2.setYear_from(2012);
-        modelDTO2.setName("FLUENCE");
-        ModelDTO modelDTO3 = new ModelDTO();
-        modelDTO3.setYear_to(2022);
-        modelDTO3.setYear_from(2012);
-        modelDTO3.setName("FJ");
+        ModelDTO modelDTO = ModelDTO.builder()
+                .name("FABIA")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
+        ModelDTO modelDTO2 = ModelDTO.builder()
+                .name("FLUENCE")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
+        ModelDTO modelDTO3 = ModelDTO.builder()
+                .name("FJ")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
         List<ModelDTO> modelDTOS = new ArrayList<>();
         modelDTOS.add(modelDTO);
         modelDTOS.add(modelDTO2);
@@ -118,10 +124,11 @@ public class MainControllerTest {
 
     @Test
     public void getByIdModel() throws Exception {
-        ModelDTO modelDTO = new ModelDTO();
-        modelDTO.setName("FABIA");
-        modelDTO.setYear_from(2012);
-        modelDTO.setYear_to(2022);
+        ModelDTO modelDTO = ModelDTO.builder()
+                .name("FABIA")
+                .year_from(2012)
+                .year_to(2022)
+                .build();
 
         given(mainController.getByIdModel("1")).willReturn(modelDTO);
 
@@ -140,7 +147,8 @@ public class MainControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/model/F")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)));;
+                .andExpect(jsonPath("$", hasSize(3)));
+        ;
 
     }
 
