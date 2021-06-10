@@ -37,7 +37,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getAllFromModelYearMin(String year) {
-        List<Model> modelsByName = modelRepository.getAllByYear_fromIsGreaterThanEqual(Integer.parseInt(year));
+        List<Model> modelsByName = modelRepository.getAllByYearFromGreaterThanEqual(Integer.parseInt(year));
         List<ModelDTO> modelDTOS = new ArrayList<>();
         for (Model model : modelsByName) {
             modelDTOS.add(modelMapper.map(model, ModelDTO.class));
@@ -46,7 +46,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getAllFromModelYearMax(String year) {
-        List<Model> modelsByName = modelRepository.getAllFromModelYearMax(Integer.parseInt(year));
+        List<Model> modelsByName = modelRepository.getAllByYearFromLessThanEqual(Integer.parseInt(year));
         List<ModelDTO> modelDTOS = new ArrayList<>();
         for (Model model : modelsByName) {
             modelDTOS.add(modelMapper.map(model, ModelDTO.class));
@@ -55,7 +55,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getAllToModelYearMin(String year) {
-        List<Model> modelsByName = modelRepository.getAllToModelYearMin(Integer.parseInt(year));
+        List<Model> modelsByName = modelRepository.getAllByYearToGreaterThanEqual(Integer.parseInt(year));
         List<ModelDTO> modelDTOS = new ArrayList<>();
         for (Model model : modelsByName) {
             modelDTOS.add(modelMapper.map(model, ModelDTO.class));
@@ -64,7 +64,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getAllToModelYearMax(String year) {
-        List<Model> modelsByName = modelRepository.getAllToModelYearMax(Integer.parseInt(year));
+        List<Model> modelsByName = modelRepository.getAllByYearToLessThanEqual(Integer.parseInt(year));
         List<ModelDTO> modelDTOS = new ArrayList<>();
         for (Model model : modelsByName) {
             modelDTOS.add(modelMapper.map(model, ModelDTO.class));
@@ -73,7 +73,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getModelsByMakeId(Long id) {
-        List<Model> allModelsByMakeId = modelRepository.getAllByMake_Id(id);
+        List<Model> allModelsByMakeId = modelRepository.getAllByMakeId(id);
         List<ModelDTO> allModelsDTOSByMakeId = new ArrayList<>();
         if (allModelsByMakeId.size() == 0) {
             return new ArrayList<ModelDTO>();
