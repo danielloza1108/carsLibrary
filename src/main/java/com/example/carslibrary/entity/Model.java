@@ -1,9 +1,5 @@
 package com.example.carslibrary.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,11 +12,27 @@ public class Model {
     private Long id;
     @Column(nullable = false)
     private String name;
-    private int year_from;
-    private int year_to;
+    private int yearFrom;
+    private int yearTo;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_make")
     private Make make;
+
+    public int getYearFrom() {
+        return yearFrom;
+    }
+
+    public void setYearFrom(int yearFrom) {
+        this.yearFrom = yearFrom;
+    }
+
+    public int getYearTo() {
+        return yearTo;
+    }
+
+    public void setYearTo(int yearTo) {
+        this.yearTo = yearTo;
+    }
 
     public Long getId() {
         return id;
@@ -36,22 +48,6 @@ public class Model {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getYear_from() {
-        return year_from;
-    }
-
-    public void setYear_from(int year_from) {
-        this.year_from = year_from;
-    }
-
-    public int getYear_to() {
-        return year_to;
-    }
-
-    public void setYear_to(int year_to) {
-        this.year_to = year_to;
     }
 
     public Make getMake() {

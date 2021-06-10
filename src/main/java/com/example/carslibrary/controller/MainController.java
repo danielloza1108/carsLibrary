@@ -24,6 +24,7 @@ public class MainController {
     public List<MakeDTO> getAllMakes(){
         return makeService.getAll();
     }
+
     //Endpoint wyszukujący wszystkie modele samochodów dla podanej marki samochodu.
     @GetMapping("/idMake/{idMake}")
     public List<ModelDTO> getByIdMake(@PathVariable String idMake) throws Exception {

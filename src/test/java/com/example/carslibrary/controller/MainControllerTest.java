@@ -56,18 +56,18 @@ public class MainControllerTest {
     private List<ModelDTO> getModelDTOS() {
         ModelDTO modelDTO = ModelDTO.builder()
                 .name("FABIA")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         ModelDTO modelDTO2 = ModelDTO.builder()
                 .name("KODIAQ")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         ModelDTO modelDTO3 = ModelDTO.builder()
                 .name("YETI")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         List<ModelDTO> modelDTOS = new ArrayList<>();
         modelDTOS.add(modelDTO);
@@ -80,18 +80,18 @@ public class MainControllerTest {
     private List<ModelDTO> getModelsByName() {
         ModelDTO modelDTO = ModelDTO.builder()
                 .name("FABIA")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         ModelDTO modelDTO2 = ModelDTO.builder()
                 .name("FLUENCE")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         ModelDTO modelDTO3 = ModelDTO.builder()
                 .name("FJ")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
         List<ModelDTO> modelDTOS = new ArrayList<>();
         modelDTOS.add(modelDTO);
@@ -126,8 +126,8 @@ public class MainControllerTest {
     public void getByIdModel() throws Exception {
         ModelDTO modelDTO = ModelDTO.builder()
                 .name("FABIA")
-                .year_from(2012)
-                .year_to(2022)
+                .yearFrom(2012)
+                .yearTo(2022)
                 .build();
 
         given(mainController.getByIdModel("1")).willReturn(modelDTO);
