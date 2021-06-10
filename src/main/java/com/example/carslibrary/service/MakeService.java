@@ -23,11 +23,9 @@ public class MakeService {
 
     public List<MakeDTO> getAll() {
         List<Make> all = makeRepository.getAll();
-        List<MakeDTO> allDTOS = new ArrayList<>();
-        for (Make make : all) {
-            allDTOS.add(modelMapper.map(make, MakeDTO.class));
-        }
-        return allDTOS;
+        List<MakeDTO> allDTOs = new ArrayList<>();
+        all.forEach(make -> allDTOs.add(modelMapper.map(make,MakeDTO.class)));
+        return allDTOs;
     }
 
 }
