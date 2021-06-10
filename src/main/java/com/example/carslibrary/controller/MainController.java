@@ -37,7 +37,7 @@ public class MainController {
         return modelsByMakeId;
     }
 
-    @GetMapping("/models/{idModel}")
+    @GetMapping("/models/id/{idModel}")
     public ModelDTO getByIdModel(@PathVariable String idModel) throws Exception {
         ModelDTO modelById = modelService.getModelById(Long.valueOf(idModel));
         if(modelById.getName() == null){
@@ -46,7 +46,7 @@ public class MainController {
         return modelById;
     }
 
-    @GetMapping("/models/{modelName}")
+    @GetMapping("/models/name/{modelName}")
     public List<ModelDTO> getAllByModelName(@PathVariable String modelName) throws Exception {
         List<ModelDTO> modelsByName = modelService.getModelByName(modelName);
         return modelsByName;
