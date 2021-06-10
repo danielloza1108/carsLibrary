@@ -37,7 +37,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getAllFromModelYearMin(String year) {
-        List<Model> modelsByName = modelRepository.getAllFromModelYearMin(Integer.parseInt(year));
+        List<Model> modelsByName = modelRepository.getAllByYear_fromIsGreaterThanEqual(Integer.parseInt(year));
         List<ModelDTO> modelDTOS = new ArrayList<>();
         for (Model model : modelsByName) {
             modelDTOS.add(modelMapper.map(model, ModelDTO.class));
@@ -73,7 +73,7 @@ public class ModelService {
     }
 
     public List<ModelDTO> getModelsByMakeId(Long id) {
-        List<Model> allModelsByMakeId = modelRepository.getAllByMakeId(id);
+        List<Model> allModelsByMakeId = modelRepository.getAllByMake_Id(id);
         List<ModelDTO> allModelsDTOSByMakeId = new ArrayList<>();
         if (allModelsByMakeId.size() == 0) {
             return new ArrayList<ModelDTO>();

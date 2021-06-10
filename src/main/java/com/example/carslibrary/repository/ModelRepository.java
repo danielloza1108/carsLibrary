@@ -13,14 +13,14 @@ import java.util.List;
 public interface ModelRepository extends JpaRepository<Model, Long> {
     Model getAllById(Long makeId);
 
-    @Query(value = "SELECT * FROM model WHERE id_make = :id", nativeQuery = true)
-    List<Model> getAllByMakeId(@Param("id") Long id);
+//    @Query(value = "SELECT * FROM model WHERE id_make = :id", nativeQuery = true)
+//    List<Model> getAllByMakeId(@Param("id") Long id);
 
     @Query(value = "SELECT * FROM model WHERE name LIKE :name||'_%'", nativeQuery = true)
     List<Model> getByName(String name);
 
-    @Query(value = "SELECT * FROM model WHERE year_from >= :minYear", nativeQuery = true)
-    List<Model> getAllFromModelYearMin(@Param("minYear") int minYear);
+//    @Query(value = "SELECT * FROM model WHERE year_from >= :minYear", nativeQuery = true)
+//    List<Model> getAllFromModelYearMin(@Param("minYear") int minYear);
 
     @Query(value = "SELECT * FROM model WHERE year_from <= :maxYear", nativeQuery = true)
     List<Model> getAllFromModelYearMax(@Param("maxYear") int maxYear);
@@ -30,4 +30,8 @@ public interface ModelRepository extends JpaRepository<Model, Long> {
 
     @Query(value = "SELECT * FROM model WHERE year_to <= :maxYear", nativeQuery = true)
     List<Model> getAllToModelYearMax(@Param("maxYear") int maxYear);
+    List<Model> getAllByYear_toIsGreaterThanEqual(int minYear);
+    List<Model> getAllByYear_fromIsGreaterThanEqual(int maxYear);
+    List<Model> getAllByMake_Id(Long id);
+
 }
