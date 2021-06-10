@@ -22,7 +22,7 @@ public class ModelService {
     public ModelDTO getModelById(Long modelId) {
         Model allById = modelRepository.getAllById(modelId);
         if (allById == null) {
-            return new ModelDTO();
+            return ModelDTO.builder().build();
         }
         return modelMapper.map(allById, ModelDTO.class);
     }
