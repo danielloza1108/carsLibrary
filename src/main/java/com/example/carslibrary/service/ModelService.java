@@ -29,47 +29,37 @@ public class ModelService {
 
     public List<ModelDTO> getModelByName(String modelName) {
         List<Model> modelsByName = modelRepository.getByName(modelName);
-        List<ModelDTO> modelDTOS = new ArrayList<>();
-        for (Model model : modelsByName) {
-            modelDTOS.add(modelMapper.map(model, ModelDTO.class));
-        }
-        return modelDTOS;
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(modelMapper.map(model, ModelDTO.class)));
+        return modelDTOs;
     }
 
     public List<ModelDTO> getAllFromModelYearMin(String year) {
         List<Model> modelsByName = modelRepository.getAllByYearFromGreaterThanEqual(Integer.parseInt(year));
-        List<ModelDTO> modelDTOS = new ArrayList<>();
-        for (Model model : modelsByName) {
-            modelDTOS.add(modelMapper.map(model, ModelDTO.class));
-        }
-        return modelDTOS;
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(modelMapper.map(model, ModelDTO.class)));
+        return modelDTOs;
     }
 
     public List<ModelDTO> getAllFromModelYearMax(String year) {
         List<Model> modelsByName = modelRepository.getAllByYearFromLessThanEqual(Integer.parseInt(year));
-        List<ModelDTO> modelDTOS = new ArrayList<>();
-        for (Model model : modelsByName) {
-            modelDTOS.add(modelMapper.map(model, ModelDTO.class));
-        }
-        return modelDTOS;
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(modelMapper.map(model, ModelDTO.class)));
+        return modelDTOs;
     }
 
     public List<ModelDTO> getAllToModelYearMin(String year) {
         List<Model> modelsByName = modelRepository.getAllByYearToGreaterThanEqual(Integer.parseInt(year));
-        List<ModelDTO> modelDTOS = new ArrayList<>();
-        for (Model model : modelsByName) {
-            modelDTOS.add(modelMapper.map(model, ModelDTO.class));
-        }
-        return modelDTOS;
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(modelMapper.map(model, ModelDTO.class)));
+        return modelDTOs;
     }
 
     public List<ModelDTO> getAllToModelYearMax(String year) {
         List<Model> modelsByName = modelRepository.getAllByYearToLessThanEqual(Integer.parseInt(year));
-        List<ModelDTO> modelDTOS = new ArrayList<>();
-        for (Model model : modelsByName) {
-            modelDTOS.add(modelMapper.map(model, ModelDTO.class));
-        }
-        return modelDTOS;
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(modelMapper.map(model, ModelDTO.class)));
+        return modelDTOs;
     }
 
     public List<ModelDTO> getModelsByMakeId(Long id) {
@@ -78,9 +68,7 @@ public class ModelService {
         if (allModelsByMakeId.size() == 0) {
             return new ArrayList<ModelDTO>();
         }
-        for (Model model : allModelsByMakeId) {
-            allModelsDTOSByMakeId.add(modelMapper.map(model, ModelDTO.class));
-        }
+        allModelsByMakeId.forEach(model -> allModelsDTOSByMakeId.add(modelMapper.map(model, ModelDTO.class)));
         return allModelsDTOSByMakeId;
     }
 }
