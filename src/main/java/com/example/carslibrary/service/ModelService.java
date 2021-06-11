@@ -34,29 +34,29 @@ public class ModelService {
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllFromModelYearMin(String year) {
-        List<Model> modelsByName = modelRepository.getAllByYearFromGreaterThanEqual(Integer.parseInt(year));
+    public List<ModelDTO> getAllFromModelYearMin(int year) {
+        List<Model> modelsByName = modelRepository.getAllByYearFromGreaterThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllFromModelYearMax(String year) {
-        List<Model> modelsByName = modelRepository.getAllByYearFromLessThanEqual(Integer.parseInt(year));
+    public List<ModelDTO> getAllFromModelYearMax(int year) {
+        List<Model> modelsByName = modelRepository.getAllByYearFromLessThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllToModelYearMin(String year) {
-        List<Model> modelsByName = modelRepository.getAllByYearToGreaterThanEqual(Integer.parseInt(year));
+    public List<ModelDTO> getAllToModelYearMin(int year) {
+        List<Model> modelsByName = modelRepository.getAllByYearToGreaterThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllToModelYearMax(String year) {
-        List<Model> modelsByName = modelRepository.getAllByYearToLessThanEqual(Integer.parseInt(year));
+    public List<ModelDTO> getAllToModelYearMax(int year) {
+        List<Model> modelsByName = modelRepository.getAllByYearToLessThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;

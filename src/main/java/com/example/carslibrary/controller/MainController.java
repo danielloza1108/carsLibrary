@@ -53,25 +53,25 @@ public class MainController {
     }
 
     @GetMapping("/models/min/from/{year}")
-    public List<ModelDTO> getAllFromModelYearMin(@PathVariable String year) throws Exception {
+    public List<ModelDTO> getAllFromModelYearMin(@PathVariable int year) throws Exception {
         List<ModelDTO> modelsByName = modelService.getAllFromModelYearMin(year);
         return modelsByName;
     }
 
     @GetMapping("/models/max/from/{year}")
-    public List<ModelDTO> getAllFromModelYearMax(@PathVariable String year) throws Exception {
+    public List<ModelDTO> getAllFromModelYearMax(@PathVariable int year) throws Exception {
         List<ModelDTO> modelsByName = modelService.getAllFromModelYearMax(year);
         return modelsByName;
     }
 
     @GetMapping("/models/min/to/{year}")
-    public List<ModelDTO> getAllToModelYearMin(@PathVariable String year) throws Exception {
+    public List<ModelDTO> getAllToModelYearMin(@PathVariable int year) throws Exception {
         List<ModelDTO> modelsByName = modelService.getAllToModelYearMin(year);
         return modelsByName;
     }
 
     @GetMapping("/models/max/to/{year}")
-    public List<ModelDTO> getAllToModelYearMax(@PathVariable String year) throws Exception {
+    public List<ModelDTO> getAllToModelYearMax(@PathVariable int year) throws Exception {
         List<ModelDTO> modelsByName = modelService.getAllToModelYearMax(year);
         return modelsByName;
     }
