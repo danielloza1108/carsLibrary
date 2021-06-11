@@ -21,9 +21,10 @@ public class MainController {
         this.makeService = makeService;
         this.modelService = modelService;
     }
+
     //Endpoint wyszukujący wszystkie marki samochodów w bazie.
-    @GetMapping( "/makes")
-    public List<MakeDTO> getAllMakes(){
+    @GetMapping("/makes")
+    public List<MakeDTO> getAllMakes() {
         return makeService.getAll();
     }
 
@@ -31,7 +32,7 @@ public class MainController {
     @GetMapping("/makes/{idMake}")
     public List<ModelDTO> getByIdMake(@PathVariable String idMake) throws Exception {
         List<ModelDTO> modelsByMakeId = modelService.getModelsByMakeId(Long.valueOf(idMake));
-        if(modelsByMakeId.size() == 0){
+        if (modelsByMakeId.size() == 0) {
             throw new Exception("Not in database!");
         }
         return modelsByMakeId;
@@ -40,7 +41,7 @@ public class MainController {
     @GetMapping("/models/id/{idModel}")
     public ModelDTO getByIdModel(@PathVariable String idModel) throws Exception {
         ModelDTO modelById = modelService.getModelById(Long.valueOf(idModel));
-        if(modelById.getName() == null){
+        if (modelById.getName() == null) {
             throw new Exception("Not in database!");
         }
         return modelById;
@@ -75,4 +76,11 @@ public class MainController {
         List<ModelDTO> modelsByName = modelService.getAllToModelYearMax(year);
         return modelsByName;
     }
+
+    @GetMapping("/makes/{id}/models/{yearFrom}/{yearTo}")
+    public List<ModelDTO> getAllModelsByYears(@PathVariable int id, @PathVariable int yearFrom, @PathVariable int yearTo) {
+        List<ModelDTO> modelsByYears = modelService.getModelsByYears(id,yearFrom,yearTo);
+                return modelsByYears;
+    }
+
 }
