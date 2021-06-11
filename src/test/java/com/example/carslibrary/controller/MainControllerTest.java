@@ -114,7 +114,7 @@ public class MainControllerTest {
 
     @Test
     public void getByIdMake() throws Exception {
-        given(mainController.getByIdMake("1")).willReturn(getModelDTOS());
+        given(mainController.getByIdMake(1L)).willReturn(getModelDTOS());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/car-management/makes/1")
                 .contentType(APPLICATION_JSON))
@@ -130,7 +130,7 @@ public class MainControllerTest {
                 .yearTo(2022)
                 .build();
 
-        given(mainController.getByIdModel("1")).willReturn(modelDTO);
+        given(mainController.getByIdModel(1L)).willReturn(modelDTO);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/id/1")
                 .contentType(APPLICATION_JSON))
