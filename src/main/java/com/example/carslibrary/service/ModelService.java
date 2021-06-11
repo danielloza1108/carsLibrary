@@ -27,42 +27,60 @@ public class ModelService {
         return mapStructMapper.modelToModelDTO(allById);
     }
 
-    public List<ModelDTO> getModelByName(String modelName) {
+    public List<ModelDTO> getModelByName(String modelName) throws Exception {
+        if(modelName == null){
+            throw new Exception("Name cannot be empty");
+        }
         List<Model> modelsByName = modelRepository.getByName(modelName);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllFromModelYearMin(int year) {
+    public List<ModelDTO> getAllFromModelYearMin(int year) throws Exception {
+        if(year == 0){
+            throw new Exception("Year cannot be empty");
+        }
         List<Model> modelsByName = modelRepository.getAllByYearFromGreaterThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllFromModelYearMax(int year) {
+    public List<ModelDTO> getAllFromModelYearMax(int year) throws Exception {
+        if(year == 0){
+            throw new Exception("Year cannot be empty");
+        }
         List<Model> modelsByName = modelRepository.getAllByYearFromLessThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllToModelYearMin(int year) {
+    public List<ModelDTO> getAllToModelYearMin(int year) throws Exception {
+        if(year == 0){
+            throw new Exception("Year cannot be empty");
+        }
         List<Model> modelsByName = modelRepository.getAllByYearToGreaterThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getAllToModelYearMax(int year) {
+    public List<ModelDTO> getAllToModelYearMax(int year) throws Exception {
+        if(year == 0){
+            throw new Exception("Year cannot be empty");
+        }
         List<Model> modelsByName = modelRepository.getAllByYearToLessThanEqual(year);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
         return modelDTOs;
     }
 
-    public List<ModelDTO> getModelsByMakeId(Long id) {
+    public List<ModelDTO> getModelsByMakeId(Long id) throws Exception {
+        if(id == null){
+            throw new Exception("Id cannot be empty");
+        }
         List<Model> allModelsByMakeId = modelRepository.getAllByMakeId(id);
         List<ModelDTO> allModelsDTOSByMakeId = new ArrayList<>();
         if (allModelsByMakeId.size() == 0) {
@@ -72,7 +90,14 @@ public class ModelService {
         return allModelsDTOSByMakeId;
     }
 
-    public List<ModelDTO> getModelsByYears(int id, int yearFrom, int yearTo){
+    public List<ModelDTO> getModelsByYears(Long id, int yearFrom, int yearTo) throws Exception {
+        if(yearFrom == 0 || yearTo == 0){
+            throw new Exception("Year cannot be empty");
+        }
+        if(id == null){
+            throw new Exception("Id cannot be empty");
+        }
+
         List<Model> modelsByName = modelRepository.getAllByMakeIdAndYearFromGreaterThanEqualAndYearFromLessThanEqualOrYearToGreaterThanEqualAndYearToLessThanEqualAndMakeId((long) id,yearFrom,yearTo,yearFrom,yearTo, (long) id);
         List<ModelDTO> modelDTOs = new ArrayList<>();
         modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
