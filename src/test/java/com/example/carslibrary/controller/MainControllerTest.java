@@ -105,7 +105,7 @@ public class MainControllerTest {
     public void getAllMakes() throws Exception {
         given(mainController.getAllMakes()).willReturn(getMakeDTO());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/allMake")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/makes")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -116,7 +116,7 @@ public class MainControllerTest {
     public void getByIdMake() throws Exception {
         given(mainController.getByIdMake("1")).willReturn(getModelDTOS());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/idMake/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/makes/1")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -132,19 +132,19 @@ public class MainControllerTest {
 
         given(mainController.getByIdModel("1")).willReturn(modelDTO);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/idModel/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/id/1")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").exists())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.year_from").exists())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.year_to").exists());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.yearFrom").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.yearTo").exists());
     }
 
     @Test
     public void getAllByModelName() throws Exception {
         given(mainController.getAllByModelName("F")).willReturn(getModelsByName());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/model/F")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/name/F")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -154,9 +154,9 @@ public class MainControllerTest {
 
     @Test
     public void getAllFromModelYearMin() throws Exception {
-        given(mainController.getAllFromModelYearMin("2012")).willReturn(getModelDTOS());
+        given(mainController.getAllFromModelYearMin(2012)).willReturn(getModelDTOS());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/modelYearFromMin/2012")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/min/from/2012")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -164,9 +164,9 @@ public class MainControllerTest {
 
     @Test
     public void getAllFromModelYearMax() throws Exception {
-        given(mainController.getAllFromModelYearMax("2022")).willReturn(getModelDTOS());
+        given(mainController.getAllFromModelYearMax(2022)).willReturn(getModelDTOS());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/modelYearFromMax/2022")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/max/from/2022")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -174,9 +174,9 @@ public class MainControllerTest {
 
     @Test
     public void getAllToModelYearMin() throws Exception {
-        given(mainController.getAllToModelYearMin("2000")).willReturn(getModelDTOS());
+        given(mainController.getAllToModelYearMin(2000)).willReturn(getModelDTOS());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/modelYearToMin/2000")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/min/to/2000")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
@@ -185,9 +185,9 @@ public class MainControllerTest {
 
     @Test
     public void getAllToModelYearMax() throws Exception {
-        given(mainController.getAllToModelYearMax("2008")).willReturn(getModelDTOS());
+        given(mainController.getAllToModelYearMax(2008)).willReturn(getModelDTOS());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/modelYearToMax/2008")
+        mockMvc.perform(MockMvcRequestBuilders.get("/car-management/models/max/to/2008")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
