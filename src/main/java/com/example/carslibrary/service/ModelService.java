@@ -71,4 +71,11 @@ public class ModelService {
         allModelsByMakeId.forEach(model -> allModelsDTOSByMakeId.add(mapStructMapper.modelToModelDTO(model)));
         return allModelsDTOSByMakeId;
     }
+
+    public List<ModelDTO> getModelsByYears(int id, int yearFrom, int yearTo){
+        List<Model> modelsByName = modelRepository.getAllByMakeIdAndYearFromGreaterThanEqualAndYearFromLessThanEqualOrYearToGreaterThanEqualAndYearToLessThanEqual((long) id,yearFrom,yearTo,yearFrom,yearTo);
+        List<ModelDTO> modelDTOs = new ArrayList<>();
+        modelsByName.forEach(model -> modelDTOs.add(mapStructMapper.modelToModelDTO(model)));
+        return modelDTOs;
+    }
 }

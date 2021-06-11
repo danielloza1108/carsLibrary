@@ -25,4 +25,6 @@ public interface ModelRepository extends JpaRepository<Model, Long> {
 
     List<Model> getAllByYearFromLessThanEqual(int maxYear);
 
+    List<Model> getAllByMakeIdAndYearFromGreaterThanEqualAndYearFromLessThanEqualOrYearToGreaterThanEqualAndYearToLessThanEqual(Long id,int yearFromMin, int yearFromMax, int yearToMin, int yearToMax);
+
 }
