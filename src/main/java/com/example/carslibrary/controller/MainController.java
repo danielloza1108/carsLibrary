@@ -4,14 +4,12 @@ import com.example.carslibrary.DTO.MakeDTO;
 import com.example.carslibrary.DTO.ModelDTO;
 import com.example.carslibrary.service.MakeService;
 import com.example.carslibrary.service.ModelService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/car-management")
 public class MainController {
     private final MakeService makeService;

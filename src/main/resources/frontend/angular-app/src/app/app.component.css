@@ -1,0 +1,41 @@
+
+.carIcon{
+  font-size: 40px;
+}
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.siteTitle{
+  font-size: 25px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+input[type="button"] {
+  background-color: #1976d2;
+  color: #fff;
+  margin-top: .625rem;
+  padding: .75rem 2.5rem;
+  box-shadow: 0px 4px 0px 0px #0d4e93;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+  font-size: 1.375rem;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  outline: none;
+}
+input[type="button"]:hover{
+   box-shadow: 0px 3px 0px 0px #0d4e93;
+   cursor: pointer;
+   top: 1px;
+   position: relative;
+ }
+input[type="button"]:active{
+   box-shadow: 0px 0px 0px 0px #0d4e93;
+   cursor: pointer;
+   top: 4px;
+   position: relative;
+
+ }
+

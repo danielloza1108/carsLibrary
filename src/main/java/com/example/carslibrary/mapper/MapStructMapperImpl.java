@@ -14,6 +14,7 @@ public class MapStructMapperImpl implements MapStructMapper {
             return null;
         }
         ModelDTO modelDTO = ModelDTO.builder()
+                .id(model.getId())
                 .name(model.getName())
                 .yearFrom(model.getYearFrom())
                 .yearTo(model.getYearTo())
